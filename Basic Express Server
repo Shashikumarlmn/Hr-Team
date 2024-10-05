@@ -1,0 +1,30 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+
+const app = express();
+const port = 3000;
+
+// Middleware
+app.use(bodyParser.json());
+
+// MongoDB connection
+mongoose.connect('mongodb://localhost:27017/hr-dashboard', { useNewUrlParser: true, useUnifiedTopology: true });
+
+// Employee Model
+const Employee = mongoose.model('Employee', {
+    name: String,
+    position: String,
+    department: String,
+    status: String,
+});
+
+// Routes
+app.get('/employees', async (req, res) => {
+    const employees = await Employee.find();
+    res.json(employees);
+});
+
+app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
+});
