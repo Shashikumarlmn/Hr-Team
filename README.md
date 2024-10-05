@@ -1,2 +1,1 @@
-# Hr-Team
-HR File 
+This is a basic HR manager dashboard setup. The front-end HTML and CSS create a visual interface, and JavaScript adds dynamic functionality. The backend, powered by Node.js and Express, handles data management with MongoDB.
